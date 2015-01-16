@@ -10,6 +10,9 @@ Project for Data Engineering Fellowship at Insight Data Science '15A
 
 ## Project Roadmap
 What each part of the pipeline looks like
+- get raw .SC2Replay
+- parse raw .SC2Replay
+- 
 
 ### Getting Raw .SC2Replay Data
 Qualitative:
@@ -28,3 +31,5 @@ Qualitative
 - Which information to parse/extract
 - How to parallelize this operation (if needed)
 - What does each field in the parsed files mean
+
+### 
