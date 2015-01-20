@@ -1,1 +1,3 @@
 *.DS_Store
+cluster_login.sh
+credentials.txt
