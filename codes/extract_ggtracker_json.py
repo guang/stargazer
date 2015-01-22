@@ -5,6 +5,8 @@
 """
 import json
 import numpy as np
+import sys
+import csv
 
 
 def read_json(fname):
@@ -134,6 +136,17 @@ def find_player_id(simple_matches, player):
         return str(simple_matches['entities'][1]['identity']['id'])
 
 
+def find_total_timestamp_num(extended_match):
+    pass
+
+
+def write_results_to_csv(final_result):
+    """ WARNING: did not implement looping! """
+    with open("/Users/guangyang/Work/project_insight/data/dummy.csv",
+              "a") as f:
+        writer = csv.writer(f)
+        writer.writerow(final_result)
+
 def extract_match_invariant(simple_matches):
     """ Main Part 1 """
     temp_about_match = match_invariant_about_match(simple_matches)
@@ -142,9 +155,9 @@ def extract_match_invariant(simple_matches):
 
 def extract_match_specific(extended_matches, player0_id, player1_id):
     """ Main Part 2 """
-    temp = np.array()
-    match_specific_snapshot(extended_matches, player0_id, player1_id):
-    match_specific_byframe(extended_matches, player0_id, player1_id):
+    # temp = np.array()
+    # match_specific_snapshot(extended_matches, player0_id, player1_id):
+    # match_specific_byframe(extended_matches, player0_id, player1_id):
     pass
 
 
@@ -154,10 +167,15 @@ def construct_match_events(match_invariant, match_specific):
 
 if __name__ == "__main__":
     # loading
-    simple_match_fname = ("/Users/guangyang/Work/project_insight/data/raw/"
-                          "matches_5746684_simple.json")
-    extended_match_fname = ("/Users/guangyang/Work/project_insight/data/raw/"
-                            "matches_5746684_extended.json")
+    if len(sys.argv) == 1:
+        simple_match_fname = ("/Users/guangyang/Work/project_insight/data/raw/"
+                              "matches_5746684_simple.json")
+        extended_match_fname = ("/Users/guangyang/Work/project_insight/data/"
+                                "raw/matches_5746684_extended.json")
+    elif len(sys.argv) == 3:
+        simple_match_fname = sys.argv[1]
+        extended_match_fname = sys.argv[2]
+
     simple_match = read_json(simple_match_fname)
     extended_match = read_json(extended_match_fname)
 
@@ -176,3 +194,7 @@ if __name__ == "__main__":
     result = construct_match_events(match_invariant_part, match_specific_part)
 
     # TODO Add Validations here maybe?
+    # TODO delete me this is temporary
+    write_results_to_csv(match_invariant_part)
+    # if len(sys.argv) == 3:
+    #     write_results_to_csv(match_invariant_part)
