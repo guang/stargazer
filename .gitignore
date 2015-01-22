@@ -1,3 +1,5 @@
 *.DS_Store
-cluster_login.sh
+hdfs_login.sh
+cassandra_login.sh
+
 credentials.txt
