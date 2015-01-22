@@ -1,4 +1,5 @@
-from spark import SparkContext as sc
+from pyspark import SparkContext
+sc = SparkContext()
 raw = sc.textFile("/guang/dummy.csv") \
     .map(lambda x: x.split(',')) \
     .cache()
