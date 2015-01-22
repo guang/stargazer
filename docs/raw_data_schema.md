@@ -224,7 +224,7 @@ naming style to get all 3 layers for basic stats being tracked.
 
 1. `player0_scouting (extended_matches['scouting'][player0_id])`
 
-  Integer
+  Boolean
 
 1. `player0_num_bases (extended_matches['num_bases'][0])`
 
