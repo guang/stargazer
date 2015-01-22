@@ -4,6 +4,7 @@
                         simple and extended matches
 """
 import json
+import numpy as np
 
 
 def read_json(fname):
@@ -81,52 +82,97 @@ def match_invariant_about_match(simple_matches):
 #     temp.append(simple_matches['entities'][1]['identity']['hours_played'])
 #     temp.append(simple_matches['entities'][1]['win'])
 #     temp.append(simple_matches['entities'][1]['race'])
-# extended_matches['VespeneCollectionRate'][player0_id])
-# extended_matches['VespeneCurrent'][player0_id])
-# extended_matches['MineralsCollectionRate'][player0_id])
-# extended_matches['MineralsCurrent'][player0_id])
-# extended_matches['SupplyUsage'][player0_id][first column])
-# extended_matches['SupplyUsage'][player0_id][second column])
-# extended_matches['WorkersActiveCount'][player0_id])
-# extended_matches['Lost'][player0_id])
-# extended_matches['upgrades'][player0_id])
-# extended_matches['scouting'][player0_id])
-# extended_matches['num_bases'][0])
-#   *Need to look up how this is coded up*
-# extended_matches['armies_by_frame'][player0_id])
-# extended_matches['aggressions'][player0_id])
-#   *Need to look up how this is coded up*
-# extended_matches['VespeneCollectionRate'][player1_id])
-# extended_matches['VespeneCurrent'][player1_id])
-# extended_matches['MineralsCollectionRate'][player1_id])
-# extended_matches['MineralsCurrent'][player1_id])
-# extended_matches['SupplyUsage'][player1_id][first column])
-# extended_matches['SupplyUsage'][player1_id][second column])
-# extended_matches['WorkersActiveCount'][player1_id])
-# extended_matches['Lost'][player1_id])
-# extended_matches['upgrades'][player1_id])
-# extended_matches['scouting'][player1_id])
-# extended_matches['num_bases'][1])
-# extended_matches['armies_by_frame'][player1_id])
-# extended_matches['aggressions'][player1_id])
+
+
+def match_specific_snapshot(extended_matches, player0_id, player1_id):
+    temp = []
+    # player 0
+    temp.append(extended_matches['VespeneCollectionRate'][player0_id])
+    temp.append(extended_matches['VespeneCurrent'][player0_id])
+    temp.append(extended_matches['MineralsCollectionRate'][player0_id])
+    temp.append(extended_matches['MineralsCurrent'][player0_id])
+    temp.append(extended_matches['SupplyUsage'][player0_id][firstcolumn])
+    temp.append(extended_matches['SupplyUsage'][player0_id][secondcolumn])
+    temp.append(extended_matches['WorkersActiveCount'][player0_id])
+    temp.append(extended_matches['Lost'][player0_id])
+    # player 1
+    temp.append(extended_matches['VespeneCollectionRate'][player1_id])
+    temp.append(extended_matches['VespeneCurrent'][player1_id])
+    temp.append(extended_matches['MineralsCollectionRate'][player1_id])
+    temp.append(extended_matches['MineralsCurrent'][player1_id])
+    temp.append(extended_matches['SupplyUsage'][player1_id][firstcolumn])
+    temp.append(extended_matches['SupplyUsage'][player1_id][secondcolumn])
+    temp.append(extended_matches['WorkersActiveCount'][player1_id])
+    temp.append(extended_matches['Lost'][player1_id])
+
+
+def match_specific_byframe(extended_matches, player0_id, player1_id):
+    temp.append(extended_matches['upgrades'][player1_id])
+    temp.append(extended_matches['scouting'][player1_id])
+    temp.append(extended_matches['num_bases'][1])
+    temp.append(extended_matches['armies_by_frame'][player1_id])
+    temp.append(extended_matches['aggressions'][player1_id])
+
+    temp.append(extended_matches['upgrades'][player0_id])
+    temp.append(extended_matches['scouting'][player0_id])
+    temp.append(extended_matches['num_bases'][0])
+    temp.append(extended_matches['armies_by_frame'][player0_id])
+    temp.append(extended_matches['aggressions'][player0_id])
+
+
+def frame_to_second(frame_val):
+    """ note: rounds the output second """
+    assert type(frame_val) == int
+    return int(frame_val/16)
+
+
+def find_player_id(simple_matches, player):
+    assert player in ('player0', 'player1')
+    if player == 'player0':
+        return str(simple_matches['entities'][0]['identity']['id'])
+    else:
+        return str(simple_matches['entities'][1]['identity']['id'])
 
 
 def extract_match_invariant(simple_matches):
+    """ Main Part 1 """
     temp_about_match = match_invariant_about_match(simple_matches)
     return temp_about_match
 
 
-def extract_match_specific(extended_matches):
+def extract_match_specific(extended_matches, player0_id, player1_id):
+    """ Main Part 2 """
+    temp = np.array()
+    match_specific_snapshot(extended_matches, player0_id, player1_id):
+    match_specific_byframe(extended_matches, player0_id, player1_id):
     pass
 
+
+def construct_match_events(match_invariant, match_specific):
+    pass
+
+
 if __name__ == "__main__":
+    # loading
     simple_match_fname = ("/Users/guangyang/Work/project_insight/data/raw/"
                           "matches_5746684_simple.json")
     extended_match_fname = ("/Users/guangyang/Work/project_insight/data/raw/"
                             "matches_5746684_extended.json")
     simple_match = read_json(simple_match_fname)
     extended_match = read_json(extended_match_fname)
+
+    # match-invariant
     match_invariant_part = extract_match_invariant(simple_match)
-    match_specific_part = extract_match_specific(extended_match)
+
+    # match-specific
+    player0 = find_player_id(simple_match, 'player0')
+    player1 = find_player_id(simple_match, 'player1')
+    total_timestamp_num = find_total_timestamp_num(extended_match)
+
+    match_specific_part = extract_match_specific(extended_match,
+                                                 player0, player1)
+
+    # all together now
+    result = construct_match_events(match_invariant_part, match_specific_part)
+
     # TODO Add Validations here maybe?
-    # output = [match_invariant_part match_specific_part]
