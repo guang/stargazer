@@ -1,5 +1,6 @@
 *.DS_Store
 hdfs_login.sh
 cassandra_login.sh
-
+codes/SparkCassie/project/target/
+codes/SparkCassie/target/
 credentials.txt
