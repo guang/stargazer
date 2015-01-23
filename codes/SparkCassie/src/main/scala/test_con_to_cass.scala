@@ -9,16 +9,12 @@ object SparkCassie {
 		//val sc = new SparkContext("spark://54.67.92.5:7077", "all_about_that_database", conf)
 		
 		val sc = new SparkContext(conf)
-		val rdd = sc.cassandraTable("all_about_that_database", "guangs_database")
-		println(rdd.count)
-		println(rdd.first)
+		val rdd = sc.cassandraTable("all_about_that_database", "map_duration")
 		
-		val raw = sc.textFile("/guang/dummy.csv")
-                .map(line => line.split(","))
-    val avg_duration = raw.map(line => line
-                          .map(
+		val raw = sc.textFile("/guang/dummy.csv").map(line => line.split(","))
+    val avg_duration = raw.map(line => (line(0)(5), line(0)(10).toInt)).reduceByKey(_+_/2)
 
 
-		raw.saveToCassandra("all_about_that_database", "guangs_database", SomeColumns("id", "duration", "map_name"))
+		raw.saveToCassandra("all_about_that_database", "map_duration", SomeColumns("map_name", "duration"))
 	}
 }	
