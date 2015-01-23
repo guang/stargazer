@@ -13,7 +13,12 @@ object SparkCassie {
 		println(rdd.count)
 		println(rdd.first)
 		
-		val collection = sc.parallelize(Seq((11, 300, "Frozen Waste"), (13, 450, "Yololand")))
-		collection.saveToCassandra("all_about_that_database", "guangs_database", SomeColumns("id", "duration", "map_name"))
+		val raw = sc.textFile("/guang/dummy.csv")
+                .map(line => line.split(","))
+    val avg_duration = raw.map(line => line
+                          .map(
+
+
+		raw.saveToCassandra("all_about_that_database", "guangs_database", SomeColumns("id", "duration", "map_name"))
 	}
 }	
