@@ -12,9 +12,9 @@ object SparkCassie {
 		val rdd = sc.cassandraTable("all_about_that_database", "map_duration")
 		
 		val raw = sc.textFile("/guang/dummy.csv").map(line => line.split(","))
-    val avg_duration = raw.map(line => (line(0)(5), line(0)(10).toInt)).reduceByKey(_+_/2)
+    val avg_duration = raw.map(line => (line(5), line(10).toInt)).reduceByKey(_+_/2)
 
 
-		raw.saveToCassandra("all_about_that_database", "map_duration", SomeColumns("map_name", "duration"))
+		avg_duration.saveToCassandra("all_about_that_database", "map_duration", SomeColumns("map_name", "duration"))
 	}
 }	
