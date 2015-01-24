@@ -6,3 +6,4 @@ codes/SparkCassie/project/project/target/
 codes/SparkCassie/target/
 codes/ingestion/kafka_2.9.2-0.8.1.1
 credentials.txt
+data/raw/*.json
