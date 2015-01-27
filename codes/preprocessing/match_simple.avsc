@@ -1,0 +1,10 @@
+{"type": "record",
+ "name": "simple_match",
+ "fields": [
+   {"name": "match_id", "type": "int"},
+   {"name": "replay_id", "type": "int"},
+   {"name": "replay_url", "type": "string"},
+   {"name": "release_string", "type": "string"},
+   {"name": "expansion", "type": "int"}
+   ]
+}
