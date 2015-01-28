@@ -7,5 +7,6 @@ codes/SparkCassie/target/
 codes/api_pulling/set_aws_keys.sh
 codes/ingestion/kafka_2.9.2-0.8.1.1
 credentials.txt
-data/raw/
+data/raw/match_simple/*
+data/raw/match_extended/*
 *.pyc
