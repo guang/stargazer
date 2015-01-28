@@ -1,8 +1,10 @@
-"""    @author:            Guang Yang
-       @mktime:            1/26/2015
-       @description:       Encode simple or extended matches from json into avro
+"""    @author:             Guang Yang
+       @mktime:             1/26/2015
+       @description:        Serialize simple or extended matches from json into
+                            avro
 """
 
+import os
 from utilities import *     # NOQA
 import avro.schema
 from avro.datafile import DataFileWriter
@@ -21,8 +23,9 @@ def get_writer(schema_file, output_file):
     return writer
 
 
-def encode_match_simple(schema, output, simple_matches):
-    """
+def serialize_match_simple(schema, output, simple_matches):
+    """ Serialize simple match details from json into an avro file using specified
+    schema
     """
 
     writer = get_writer(schema, output)
@@ -102,9 +105,30 @@ def encode_match_simple(schema, output, simple_matches):
     writer.close()
 
 
+def serialize_match_extended(schema, output, extended_matches):
+    """ Serialize extended match details from json into an avro file using
+    specified schema
+    """
+
+    # writer = get_writer(schema, output)
+    # writer.append({
+    #     "match_id": simple_matches['id'],
+    pass
+
+
+def serialize_matches(source_dir, target_dir, match_type, schema):
+    """ Serialize matches from source directory (raw jsons) to destination
+    directory (serialized avros)
+    """
+
+
 if __name__ == "__main__":
-    encoded_simple = "dummy_match_1_simple.avro"
+    current_dir = os.getcwd()
+    match_simple_dir = "{}/../../data/raw/match_simple".format(current_dir)
+    match_extended_dir = "{}/../../data/raw/match_extended".format(current_dir)
+
+    serialized_simple_path = "dummy_match_1_simple.avro"
     schema_simple = "schema_match_simple.avsc"
 
     simple_match = read_json("tests/matches_5720000_simple.json")
-    encode_match_simple(schema_simple, encoded_simple, simple_match)
+    encode_match_simple(schema_simple, encoded_simple_path, simple_match)
