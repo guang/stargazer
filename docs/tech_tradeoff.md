@@ -56,3 +56,8 @@ CA vs CP:
 
 ## Front-End
 
+
+## Other
+### EC2 Instances
+HVM (Hardware-assisted Virtual Machine) vs PV (Paravirtualization)
+

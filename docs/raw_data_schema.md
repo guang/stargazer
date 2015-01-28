@@ -151,7 +151,8 @@ that remain unchanged during a specific game, from the simple match details part
   - Z: Zerg
   - R: Random
 
-1. `player0_avg_unspent_resources (simple_matches['entities'][0]['average_unspent_resources'])`
+1. `player0_avg_unspent_resources (simple_matches['entities'][0]['summary']
+   ['average_unspent_resources'])`
 
   need to change naming here
 *NOTE* cleared ['entities'][0]['identity'], still have alot that need parsed, need to change
@@ -160,23 +161,8 @@ naming style to get all 3 layers for basic stats being tracked.
 
   **About Player 1**
 
-1. `player1_id (simple_matches['entities'][1]['identity']['id'])`
-1. `player1_bnet_id (simple_matches['entities'][1]['identity']['bnet_id'])`
-1. `player1_name (simple_matches['entities'][1]['identity']['name'])`
-1. `player1_current_league_1v1 (simple_matches['entities'][1]['identity']['current_league_1v1'])`
-1. `player1_current_rank_1v1 (simple_matches['entities'][1]['identity']['current_rank_1v1'])`
-1. `player1_matches_count (simple_matches['entities'][1]['identity']['matches_count'])`
-1. `player1_season_games (simple_matches['entities'][1]['identity']['season_games'])`
-1. `player1_career_games (simple_matches['entities'][1]['identity']['career_games'])`
-1. `player1_profile_url (simple_matches['entities'][1]['identity']['profile_url'])`
-1. `player1_apm_minute (simple_matches['entities'][1]['minutes'][minute])`
-1. `player1_apm_match (simple_matches['entities'][1]['apm'])`
-1. `player1_apm_career (simple_matches['entities'][1]['identity']['stats']['apm']['avg'])`
-1. `player1_wpm_avg (simple_matches['entities'][1]['identity']['stats']['wpm']['avg'])`
-1. `player1_most_played_race (simple_matches['entities'][1]['identity']['most_played_race'])`
-1. `player1_hours_played (simple_matches['entities'][1]['identity']['hours_played'])`
-1. `player1_win (simple_matches['entities'][1]['win'])`
-1. `player1_race (simple_matches['entities'][1]['race'])`
+  Same as above but with 1 instead of 0
+
 
   **Match-Specific Data**
 
