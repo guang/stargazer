@@ -26,7 +26,8 @@ Keeping Track of What Has Been Downloaded and Pushed onto S3
 - Time of Scheduling: 2015-01-27-19-20
 
 ## Machine 4 (ed)
-- IP:
-- Partitions scheduled:
+- IP: 54.183.89.126
+- Partitions scheduled: 5680000..5689999
 - Partitions succeeded:
 - Partitions pushed to S3:
+- Time of Scheduling: 2015-01-27-19-30
