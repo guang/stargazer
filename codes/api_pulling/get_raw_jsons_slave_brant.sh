@@ -2,7 +2,7 @@
 #     @mktime:        1/26/2015
 #     @description:   Making API calls to GGtracker to get simple and extended match details
 
-for match_id in {5700000..5709999}
+for match_id in {5620000..5649999}
 do
   curl -o ../../data/raw/match_extended/matches_${match_id}_extended.json \
     https://gg2-matchblobs-prod.s3.amazonaws.com/${match_id}

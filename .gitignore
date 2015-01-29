@@ -3,7 +3,7 @@
 codes/SparkCassie/project/target/
 codes/SparkCassie/project/project/target/
 codes/SparkCassie/target/
-codes/api_pulling/set_aws_keys.sh
+codes/api_pulling/push_json_to_s3.py
 codes/ingestion/kafka_2.9.2-0.8.1.1
 credentials.txt
 data/raw/match_simple/*
