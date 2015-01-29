@@ -13,15 +13,15 @@ def store_simple(file_name_path, file_name, bucket):
     """
 
     k = Key(bucket)
-    k.key = file_name
+    k.key = "raw/match_simple/{}".format(file_name)
     k.set_contents_from_filename(file_name_path)
 
 
 def store_extended(file_name_path, file_name, bucket):
     """ stores extended match details in match_extended bucket on S3 """
 
-    k = Key("match_extended")
-    k.key = file_name
+    k = Key(bucket)
+    k.key = "raw/match_extended/{}".format(file_name)
     k.set_contents_from_filename(file_name_path)
 
 
@@ -42,10 +42,9 @@ def store_all(file_dir, match_type, bucket):
 
 
 if __name__ == "__main__":
-    conn = boto.connect_s3()
     current_dir = os.getcwd()
 
-    my_bucket = conn.get_bucket('guang-stargazer-raw-json')
+    my_bucket = conn.get_bucket('guang-stargazer')
 
     match_simple_dir = "{}/../../data/raw/match_simple".format(current_dir)
     match_extended_dir = "{}/../../data/raw/match_extended".format(current_dir)
