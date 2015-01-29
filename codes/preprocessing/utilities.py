@@ -3,6 +3,7 @@
        @description:       Utility functions for encoding/decoding avro files
 """
 import json
+import os
 
 
 def read_json(fname):
@@ -19,14 +20,14 @@ def get_num_snapshot(extended_match_json, player0_id):
     return len(extended_match_json['WorkersActiveCount'][player0_id])
 
 
-def get_snapshot_output(file_name, snapshot)
+def get_snapshot_output(file_name, snapshot):
     """ get new target file name based on snapshot number
     """
 
     snapshot_output = "{}_snapshot{}.{}".format(
-        os.path.splitext(match_name)[0],
+        os.path.splitext(file_name)[0],
         snapshot,
-        os.path.splitext(match_name)[1])
+        os.path.splitext(file_name)[1])
 
     return snapshot_output
 

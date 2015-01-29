@@ -53,8 +53,10 @@ def serialize_match_simple(schema, output, simple_match_json):
         "ended_at": simple_match_json['ended_at'],
         "player0_id": simple_match_json['entities'][0]['identity']['id'],
         "player1_id": simple_match_json['entities'][1]['identity']['id'],
-        "player0_bnet_id": simple_match_json['entities'][0]['identity']['bnet_id'],
-        "player1_bnet_id": simple_match_json['entities'][1]['identity']['bnet_id'],
+        "player0_bnet_id":
+            simple_match_json['entities'][0]['identity']['bnet_id'],
+        "player1_bnet_id":
+            simple_match_json['entities'][1]['identity']['bnet_id'],
         "player0_name": simple_match_json['entities'][0]['identity']['name'],
         "player1_name": simple_match_json['entities'][1]['identity']['name'],
         "player0_current_league_1v1":
@@ -142,12 +144,9 @@ def serialize_match_extended_snapshot(schema, output, extended_match_json,
     })
 
 
-
-
 def serialize_match_extended_event(schema, output, extended_match_json):
     """ Ser
     """
-
 
 
 def serialize_match(match_name, match_path, target_name, target_path,
@@ -175,7 +174,7 @@ def serialize_match(match_name, match_path, target_name, target_path,
                     print("Successfully wrote to {}".format(target_name))
             elif match_type == "extended_snapshot":
                 serialize_match_extended_snapshot(schema, target_path,
-                                                  match_json, match_name))
+                                                  match_json, match_name)
                 if len(match_json['SupplyUsage'].keys()) != 2:
                     print("Skipping {}: not 1v1".format(match_name))
                     os.remove(target_path)
