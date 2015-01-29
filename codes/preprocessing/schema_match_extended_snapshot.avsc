@@ -1,0 +1,15 @@
+{"type": "record",
+ "name": "extended_match_snapshot",
+ "fields": [
+   {"name": "match_id", "type": "int"},
+   {"name": "game_time", "type": "float"},
+   {"name": "player0_vespene_collection_rate", "type": "int"},
+   {"name": "player0_vespene_current", "type": "int"},
+   {"name": "player0_minerals_collection_rate", "type": "int"},
+   {"name": "player0_minerals_current", "type": "int"},
+   {"name": "player0_supply_current", "type": "int"},
+   {"name": "player0_supply_max", "type": "int"},
+   {"name": "player0_workers_active_count", "type": "int"},
+   {"name": "player0_lost", "type": "int"},
+   ]
+}
