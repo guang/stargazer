@@ -113,7 +113,8 @@ def serialize_match_simple(schema, output, simple_match_json):
     writer.close()
 
 
-def serialize_match_extended_snapshot(schema, output, extended_match_json):
+def serialize_match_extended_snapshot(schema, output, extended_match_json,
+                                      extended_match):
     """ Serialize the 10s snapshots from extended match details from json into
     timestamped avro files
 
@@ -130,10 +131,7 @@ def serialize_match_extended_snapshot(schema, output, extended_match_json):
     num_snapshot = get_num_snapshot(extended_match_json, player0_id)
 
     for snapshot in range(num_snapshot):
-        snapshot_output = "{}_snapshot{}.{}".format(
-            output.splitext(match_name)[0]),
-            snapshot,
-            output.splitext(match_name)[0]))
+        snapshot_output = get_snapshot_output(output, snapshot)
 
         writer = get_writer(schema, output)
 
@@ -177,7 +175,7 @@ def serialize_match(match_name, match_path, target_name, target_path,
                     print("Successfully wrote to {}".format(target_name))
             elif match_type == "extended_snapshot":
                 serialize_match_extended_snapshot(schema, target_path,
-                                                  match_json))
+                                                  match_json, match_name))
                 if len(match_json['SupplyUsage'].keys()) != 2:
                     print("Skipping {}: not 1v1".format(match_name))
                     os.remove(target_path)
