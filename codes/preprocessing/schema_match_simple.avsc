@@ -14,7 +14,7 @@
    {"name": "game_category", "type": "string"},
    {"name": "duration_seconds", "type": "int"},
    {"name": "winning_team", "type": "int"},
-   {"name": "ended_at", "type": "string"},
+   {"name": "ended_at", "type": "float"},
    {"name": "player0_id", "type": "int"},
    {"name": "player0_bnet_id", "type": "int"},
    {"name": "player0_name", "type": "string"},

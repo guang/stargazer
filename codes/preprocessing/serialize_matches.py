@@ -47,7 +47,7 @@ def serialize_match_simple(avro_writer, simple_match_json):
         "game_category": simple_match_json['category'],
         "duration_seconds": simple_match_json['duration_seconds'],
         "winning_team": simple_match_json['winning_team'],
-        "ended_at": simple_match_json['ended_at'],
+        "ended_at": convert_time(simple_match_json['ended_at']),
         "player0_id": simple_match_json['entities'][0]['identity']['id'],
         "player1_id": simple_match_json['entities'][1]['identity']['id'],
         "player0_bnet_id":

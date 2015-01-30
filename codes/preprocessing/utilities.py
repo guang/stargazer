@@ -4,6 +4,7 @@
 """
 import json
 import os
+import time
 
 
 def read_json(fname):
@@ -36,3 +37,10 @@ def get_player_id(extended_match_json, player):
     """ Get the player_id as a **STRING** for player 0 and 1 """
 
     return extended_match_json['WorkersActiveCount'][player]
+
+
+def convert_time(time_string):
+    time_string_no_trailing = time_string.split("+")[0]
+    time_struct = time.strptime(time_string_no_trailing, "%Y-%m-%dT%H:%M:%S")
+
+    return time.mktime(time_struct)
