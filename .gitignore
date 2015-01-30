@@ -8,4 +8,6 @@ codes/ingestion/kafka_2.9.2-0.8.1.1
 credentials.txt
 data/raw/match_simple/*
 data/raw/match_extended/*
+data/parsed/match_simple/*
+data/parsed/match_extended/*
 *.pyc
