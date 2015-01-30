@@ -252,7 +252,7 @@ if __name__ == "__main__":
 
     schema_simple = "schema_match_simple.avsc"
 
-    # batch_serialize_matches(raw_simple_dir, parsed_simple_dir,
-    #                         'simple', schema_simple)
-    batch_serialize_matches(yolo_raw_simple_dir, yolo_parsed_simple_dir,
+    batch_serialize_matches(raw_simple_dir, parsed_simple_dir,
                             'simple', schema_simple)
+    # batch_serialize_matches(yolo_raw_simple_dir, yolo_parsed_simple_dir,
+    #                         'simple', schema_simple)
