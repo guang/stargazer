@@ -217,20 +217,15 @@ def batch_serialize_matches(source_dir, target_dir, match_type, schema):
 
 if __name__ == "__main__":
     current_dir = os.getcwd()
-    # raw_simple_dir = "{}/../../data/raw/match_simple".format(current_dir)
+    raw_simple_dir = "{}/../../data/raw/match_simple".format(current_dir)
     # raw_extended_dir = "{}/../../data/raw/match_extended".format(current_dir)
 
-    # parsed_simple_dir = \
-    #     "{}/../../data/parsed/match_simple".format(current_dir)
+    parsed_simple_dir = \
+        "{}/../../data/parsed/match_simple".format(current_dir)
     # parsed_extended_dir = \
     #     "{}/../../data/parsed/match_extended".format(current_dir)
 
     schema_simple = "schema_match_simple.avsc"
 
-    yolo_raw_simple_dir = \
-        "{}/../../data/yolo_raw/match_simple".format(current_dir)
-    yolo_parsed_simple_dir = \
-        "{}/../../data/yolo_parsed/match_simple".format(current_dir)
-
-    batch_serialize_matches(yolo_raw_simple_dir, yolo_parsed_simple_dir,
+    batch_serialize_matches(raw_simple_dir, parsed_simple_dir,
                             'simple', schema_simple)
