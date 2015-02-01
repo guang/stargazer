@@ -1,6 +1,7 @@
 Stargazer: Map Analytics in Starcraft II
 ====================
 Project for Data Engineering Fellowship at Insight Data Science '15A
+
 Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
 
 ## Table of Contents
@@ -11,7 +12,7 @@ Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
 
 ## Background
 Starcraft II is a real-time strategy game released by Blizzard Entertainment in 2010.
-In addition to having a large user base with **XXX** active players world wide, Starcraft II
+In addition to having a large user base with 300,000 active players world wide, Starcraft II
 has an exciting competitive scene - Just this last year, the finals of one of the top
 tournaments, the World Champion Series, were broadcasted live on ESPN (not to mention
 the $1.6 million total prize pool).
@@ -30,9 +31,10 @@ Designing a great map is inherently difficult: on one hand it has to offer
 complexity with features that give an advantage to skilled players who really understands
 the game dynamics; on the other hand it needs to be balanced across different play styles,
 such as:
-- races (every player can choose to be either Terran, Protoss, or Zerg, each race with its
+
+- Races (every player can choose to be either Terran, Protoss, or Zerg, each race with its
   unique units and strategies)
-- strategies (some players opt for early rush, some aim to out last their opponent in long, dragged out games)
+- Strategies (some players opt for early rush, some aim to out last their opponent in long, dragged out games)
 
 It is especially difficult to measure how balanced a map is - rounds and rounds of beta testing
 simply does not capture the whole picture. Currently, selecting which maps to be kept for the
