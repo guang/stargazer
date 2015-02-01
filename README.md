@@ -1,6 +1,7 @@
-Insight Project
+Stargazer: Map Analytics in Starcraft II
 ====================
 Project for Data Engineering Fellowship at Insight Data Science '15A
+Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
 
 ## Table of Contents
 
