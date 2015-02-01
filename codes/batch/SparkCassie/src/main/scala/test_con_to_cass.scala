@@ -17,8 +17,10 @@ object SparkCassie {
     val matches_simple = sqlContext.avroFile("/matches_5673896_simple.avro")
     matches_simple.registerTempTable("simple")
 
-    val results = sqlContext.sql("select match_id, ended_at, map_name, duration_seconds from simple")
+    // val results = sqlContext.sql("select match_id, ended_at, map_name, duration_seconds from simple")
+    val results = sqlContext.sql("select match_id from simple").map(line => line.toSeq)
 
-    results.saveToCassandra("matches_simple", "map_duration_over_time", SomeColumns("match_id", "ended_at", "map_name", "duration_seconds"))
+    // results.saveToCassandra("matches_simple", "map_duration_over_time", SomeColumns("match_id", "ended_at", "map_name", "duration_seconds"))
+    results.saveToCassandra("matches_simple", "map_duration_over_time", SomeColumns("match_id"))
   }
 }
