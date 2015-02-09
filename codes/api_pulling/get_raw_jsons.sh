@@ -11,28 +11,28 @@ my_ip=$(curl ident.me)
 
 if [ "$my_ip" = "54.67.92.5" ]; then
   # master 
-  for match_id in {1..5680000..100}
+  for match_id in {5..5680000..100}
   do
     get_json_simple $match_id
     sleep 1
   done
 elif [ "$my_ip" = "54.67.61.99" ]; then
   # brant
-  for match_id in {2..5680000..100}
+  for match_id in {6..5680000..100}
   do
     get_json_simple $match_id
     sleep 1
   done
 elif [ "$my_ip" = "54.67.63.16" ]; then
   # cj
-  for match_id in {3..5680000..100}
+  for match_id in {7..5680000..100}
   do
     get_json_simple $match_id
     sleep 1
   done
 elif [ "$my_ip" = "54.183.89.126" ]; then
   # ed
-  for match_id in {4..5680000..100}
+  for match_id in {8..5680000..100}
   do
     get_json_simple $match_id
     sleep 1
