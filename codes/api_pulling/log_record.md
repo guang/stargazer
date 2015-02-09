@@ -1,6 +1,6 @@
 Keeping Track of What Has Been Downloaded and Pushed onto S3
 ============================================================
-## Total Partitions Still Need: 1..5719999
+## Total Partitions Still Need: 1..5680000
 ## ToTal Partitions Scheduled:
 
 

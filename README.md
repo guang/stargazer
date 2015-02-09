@@ -40,4 +40,4 @@ It is especially difficult to measure how balanced a map is - rounds and rounds 
 simply does not capture the whole picture. Currently, selecting which maps to be kept for the
 new season is largely a *qualitative* process, where users vote on the maps that they like.
 This naturally led to the question that I attempt to address with this project:
-**What does game data reveal about maps?**
+**What does game data reveal about map balance?**
