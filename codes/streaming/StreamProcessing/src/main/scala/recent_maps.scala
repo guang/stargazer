@@ -12,7 +12,7 @@ import com.datastax.spark.connector.streaming._
 import com.datastax.driver.core.utils._
 
 
-object StreamExample {
+object StreamProcessing {
   def main(args: Array[String]) {
 
     val conf = new SparkConf().set("spark.cassandra.connection.host", "54.67.42.97")
@@ -23,13 +23,19 @@ object StreamExample {
     val topics = Map("recent_matches" -> 1)
     val kafka_stream = KafkaUtils.createStream(ssc, zk_quorum, group_id, topics)
 
-    val parsed_message = kafkaStream.map( x => parse(x._2) ).cache()
+    val parsed_message = kafka_stream.map( x => parse(x._2) )
 
     val recent_maps = parsed_message.map( message => (compact(render( message \ "map_name" )),
       compact(render( message \ "ended_at" ))))
-
+    println("==================================================================")
+    println("==================================================================")
+    println("==================================================================")
+    println(recent_maps.print())
+    println("==================================================================")
+    println("==================================================================")
+    println("==================================================================")
     recent_maps.saveToCassandra("matches_simple", "yolo_recent_10",
-      SomeColumns("map_name", "ended_at"))
+      SomeColumns("map_name", "ended_at_raw"))
 
     ssc.start()
     ssc.awaitTermination()
