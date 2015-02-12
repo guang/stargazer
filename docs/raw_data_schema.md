@@ -11,11 +11,11 @@ three levels:
 - average for the match
 - average over player history
 
-### Match-Invariant Data
+### Time-independent Data
 Here we split the schema into two portions, one that tracks game-invariant information (data
 that remain unchanged during a specific game, from the simple match details part of the API):
 
-  **About the Match**
+#### About the Match
 
 1. `match_id (simple_matches['id'])`
 
@@ -35,7 +35,7 @@ that remain unchanged during a specific game, from the simple match details part
 
 1. `expansion (simple_matches['expansion'])`
 
-  Integer *What does this mean*
+  Float *What does this mean*
 
 1. `map_name (simple_matches['map']['name'])`
 
@@ -69,7 +69,7 @@ that remain unchanged during a specific game, from the simple match details part
 
   Datetime
 
-  **About Player 0**
+####  About Player
 
 1. `player0_id (simple_matches['entities'][0]['identity']['id'])`
 
@@ -154,21 +154,15 @@ that remain unchanged during a specific game, from the simple match details part
 1. `player0_avg_unspent_resources (simple_matches['entities'][0]['summary']
    ['average_unspent_resources'])`
 
-  need to change naming here
+need to change naming here
+
 *NOTE* cleared ['entities'][0]['identity'], still have alot that need parsed, need to change
 naming style to get all 3 layers for basic stats being tracked.
 
 
-  **About Player 1**
 
-  Same as above but with 1 instead of 0
-
-
-  **Match-Specific Data**
-
-  **About Player 0**
-
-  **Snapshot Every 10s**
+### Time-dependent Data
+#### Snapshot Every 10s
 
 1. `player0_vespene_collection_rate (extended_matches['VespeneCollectionRate'][player0_id])`
 
@@ -202,7 +196,7 @@ naming style to get all 3 layers for basic stats being tracked.
 
   Integer
 
-  **By Frame**
+#### By Frame
 
 1. `player0_upgrades (extended_matches['upgrades'][player0_id])`
 
@@ -223,24 +217,3 @@ naming style to get all 3 layers for basic stats being tracked.
 1. `player0_aggressions (extended_matches['aggressions'][player0_id])`
 
   *Need to look up how this is coded up*
-
-  **About Player 1**
-
-  **Snapshot Every 10s**
-
-1. `player1_vespene_collection_rate (extended_matches['VespeneCollectionRate'][player1_id])`
-1. `player1_vespene_current (extended_matches['VespeneCurrent'][player1_id])`
-1. `player1_minerals_collection_rate (extended_matches['MineralsCollectionRate'][player1_id])`
-1. `player1_minerals_current (extended_matches['MineralsCurrent'][player1_id])`
-1. `player1_supply_current (extended_matches['SupplyUsage'][player1_id][first column])`
-1. `player1_supply_max (extended_matches['SupplyUsage'][player1_id][second column])`
-1. `player1_workers_active_count (extended_matches['WorkersActiveCount'][player1_id])`
-1. `player1_lost (extended_matches['Lost'][player1_id])`
-
-  **By Frame**
-
-1. `player1_upgrades (extended_matches['upgrades'][player1_id])`
-1. `player1_scouting (extended_matches['scouting'][player1_id])`
-1. `player1_num_bases (extended_matches['num_bases'][1])`
-1. `player1_armies_by_frame (extended_matches['armies_by_frame'][player1_id])`
-1. `player1_aggressions (extended_matches['aggressions'][player1_id])`

@@ -1,5 +1,15 @@
 Tradeoffs in Different Technologies
 ===================================
+## File Format
+### Trade-offs:
+- storage format (columnar vs document)
+- compression
+
+### Avro
+- reinforces schema
+- more compact
+- splittable on HDFS
+- 
 
 ## Ingestion
 ### Trade-offs:
