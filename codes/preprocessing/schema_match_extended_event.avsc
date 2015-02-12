@@ -1,0 +1,12 @@
+{"type": "record",
+ "name": "extended_match_snapshot",
+ "fields": [
+   {"name": "match_id", "type": "int"},
+   {"name": "", "type": ""},
+   {"name": "", "type": ""},
+   {"name": "", "type": ""},
+   {"name": "", "type": ""},
+   {"name": "", "type": ""},
+   {"name": "", "type": ""}
+   ]
+}
