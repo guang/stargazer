@@ -1,9 +1,7 @@
 [![][StargazerLogo]][website]
-Stargazer: Map Analytics in Starcraft II
 ====================
 Project for Data Engineering Fellowship at Insight Data Science '15A
 
-The project is live (fingers crossed) [here](http://stargazer.pw).
 Questions and comments welcome at gy8 [AT] berkeley [DOT] edu
 
 ## Table of Contents
