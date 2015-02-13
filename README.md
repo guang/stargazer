@@ -59,11 +59,15 @@ data storage and Flask for front-end API.
   3. start up Kafka server (you should run this in the background via tmux as
     it will lock your terminal)
 
-    `$ ./stargazer/codes/ingestion/start_kafka_server.sh`
+    ```
+    $ ./stargazer/codes/ingestion/start_kafka_server.sh
+    ```
 
   4. start running the Kafka producer
 
-    `$ python stargazer/codes/ingestion/produce_recent_matches.py`
+    ```
+    $ python stargazer/codes/ingestion/produce_recent_matches.py
+    ```
 
 
 ##### To start Spark Streaming:
@@ -76,19 +80,24 @@ data storage and Flask for front-end API.
 
   2. change directory into SparkStreaming
 
-    `$ cd stargazer/codes/streaming/StreamProcessing`
+    ```
+    $ cd stargazer/codes/streaming/StreamProcessing
+    ```
 
   3. package dependencies:
 
-    `$ sbt assembly`
+    ```$ sbt assembly
+    ```
 
   4. do a little compilin':
 
-    `$ sbt package`
+    ```$ sbt package
+    ```
 
   5. spark-submit and hope you do not see 3 pages of error messages start flowing:
 
-    `$ ./run_streamprocessing.sh`
+    ```$ ./run_streamprocessing.sh
+    ```
 
 ##### To do batch processing in Spark:
 
@@ -116,7 +125,8 @@ data storage and Flask for front-end API.
 
   2. fire up cassandra cql shell
 
-    `$ cqlsh`
+    ```$ cqlsh
+    ```
 
   3. create or view keyspaces and tables using
   [CQL commands](https://cassandra.apache.org/doc/cql3/CQL.html)
