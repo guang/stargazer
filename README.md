@@ -165,18 +165,36 @@ This naturally led to the question that I attempt to address with this project:
 
 ## Data
 All the data (JSON) come from API calls made against
-[ggtracker.com](http://www.ggtracker.com/api),
-there are two main types: meta-data 
+[ggtracker.com](http://www.ggtracker.com/api).
+Specifically, there are 3 types of data we can extract from each match submitted by
+ggtracker users:
 
+- meta-data about the match
+  (match id, map name, winner, when the match ended, match duration, etc)
 
+- snapshot of the game state taken every 10 seconds
+  (current mineral/gas count, supply count, etc)
 
+- game events triggered by players at different times
+  (upgrades, scouting, aggressions, etc)
 
+### Historical
+For historical data, the above information are stored in
+- [simple details](https://github.com/gy8/stargazer/raw/master/data/sample_matches_simple.json)
+  (meta-data)
+- [extended details](https://github.com/gy8/stargazer/raw/master/data/sample_matches_extended.json)
+  (10 second snapshots and events triggered)
 
+### Realtime
+In terms of realtime data, the API does not offer real time streaming of the data but instead
+gives a list of 10 most
+[recent matches](https://github.com/gy8/stargazer/raw/master/data/sample_matches_recent.json)
+submitted when you make the API call.
 
 ## Pipeline
 ### Batch Processing
 ### Stream Processing
 ### API
 
-[StargazerLogo]: https://github.com/gy8/stargazer/raw/master/stargazer_logo.jpg
+[StargazerLogo]: https://github.com/gy8/stargazer/raw/master/images/stargazer_logo.jpg
 [website]: http://stargazer.pw
