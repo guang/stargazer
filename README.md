@@ -5,9 +5,128 @@ Project for Data Engineering Fellowship at Insight Data Science '15A
 Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
 
 ## Table of Contents
+- [Overview](#overview)
+- [Getting Started](#getting-started)
+  - [Usage](#usage)
+  - [Dependencies](#dependencies)
+- [Background](#background)
+- [Motivation](#motivation)
+- [Data]()
+- [Pipeline]()
+  - [Batch Processing](#batch-processing)
+  - [Stream Processing](#stream-processing)
+  - [API](#api)
 
 
 
+## Overview
+
+
+
+## Getting Started
+
+### Usage
+#### Before you begin, I assume you have:
+  1. set up an hadoop cluster where you run ingestion and processing (Kafka, HDFS, Spark) after
+    installing required dependencies (pretty much everything except Cassandra)
+
+  2. set up a cassandra cluster (You
+    do not need dependencies you installed for the other cluster)
+
+  3. cloned this repo on your master node in the hadoop cluster
+
+
+#### To start the Kafka producer that pulls recent matches from GGtracker API:
+
+  1. ssh into the master node of your hadoop cluster
+
+    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+
+  2. double check zookeeper is running
+
+    `$ cd /opt/cloudera/parcels/CDH-5.3.0-1.cdh5.3.0.p0.30/bin`
+    `$ sudo ./zookeeper-server status`
+
+  3. start up Kafka server (you should run this in the background via tmux as
+    it will lock your terminal)
+
+    `$ ./stargazer/codes/ingestion/start_kafka_server.sh`
+
+  4. start running the Kafka producer
+
+    `$ python stargazer/codes/ingestion/produce_recent_matches.py`
+
+
+#### To start Spark Streaming:
+
+  1. ssh into the master node of your hadoop cluster
+
+    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+
+  2. change directory into SparkStreaming
+
+    `$ cd stargazer/codes/streaming/StreamProcessing`
+
+  3. package dependencies:
+
+    '$ sbt assembly`
+
+  4. do a little compilin':
+
+    `$ sbt package`
+
+  5. spark-submit and hope you do not see 3 pages of error messages start flowing:
+
+    `$ ./run_streamprocessing.sh`
+
+#### To do batch processing in Spark:
+
+  1. ssh into the master node of your hadoop cluster
+
+    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+
+  2. package dependencies, compile and spark-submit
+
+    `$ sbt assembly`
+
+    `$ sbt package`
+
+    `$ ./run_sparkcassie.sh`
+
+#### To check what is going on in your Cassandra:
+
+  1. ssh into the seed node (node0 by default) of your cassandra cluster
+
+    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+
+  2. fire up cassandra cql shell
+
+    `$ cqlsh`
+
+  3. create or view keyspaces and tables using
+  [CQL commands](https://cassandra.apache.org/doc/cql3/CQL.html)
+
+
+### Dependencies
+Distribution:
+
+- CDH (Cloudera Distribution Including Apache Hadoop): 5.3.0
+
+Technologies:
+
+- Spark (Spark SQL and Spark Streaming): 1.2.0
+
+- Hadoop: 2.5.0
+
+- Cassandra: 2.1.2
+
+- Avro: 1.7.7
+
+Third-party Libraries:
+
+- [spark-cassandra-connector](https://github.com/datastax/spark-cassandra-connector): 1.2.0
+
+- [spark-avro](https://github.com/databricks/spark-avro): 0.1
 
 
 ## Background
@@ -41,3 +160,12 @@ simply does not capture the whole picture. Currently, selecting which maps to be
 new season is largely a *qualitative* process, where users vote on the maps that they like.
 This naturally led to the question that I attempt to address with this project:
 **What does game data reveal about map balance?**
+
+## Data
+
+
+
+## Pipeline
+### Batch Processing
+### Stream Processing
+### API
