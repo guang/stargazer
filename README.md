@@ -1,3 +1,4 @@
+[![][]][website]
 Stargazer: Map Analytics in Starcraft II
 ====================
 Project for Data Engineering Fellowship at Insight Data Science '15A
@@ -178,3 +179,6 @@ there are two main types: meta-data
 ### Batch Processing
 ### Stream Processing
 ### API
+
+[StargazerLogo]: https://github.com/gy8/stargazer/raw/master/stargazer_logo.jpg
+[website]: http://stargazer.pw
