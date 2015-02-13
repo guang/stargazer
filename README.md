@@ -2,7 +2,8 @@ Stargazer: Map Analytics in Starcraft II
 ====================
 Project for Data Engineering Fellowship at Insight Data Science '15A
 
-Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
+The project is live (fingers crossed) [here](http://stargazer.pw).
+Questions and comments welcome at gy8 [AT] berkeley [DOT] edu
 
 ## Table of Contents
 - [Overview](#overview)
@@ -11,8 +12,10 @@ Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
   - [Dependencies](#dependencies)
 - [Background](#background)
 - [Motivation](#motivation)
-- [Data]()
-- [Pipeline]()
+- [Data](#data)
+  - [Historical](#historical)
+  - [Realtime](#realtime)
+- [Pipeline](#pipeline)
   - [Batch Processing](#batch-processing)
   - [Stream Processing](#stream-processing)
   - [API](#api)
@@ -26,8 +29,8 @@ Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
 ## Getting Started
 
 ### Usage
-#### Before you begin, I assume you have:
-  1. set up an hadoop cluster where you run ingestion and processing (Kafka, HDFS, Spark) after
+##### Before you begin, I assume you have:
+  1. set up a hadoop cluster where you run ingestion and processing (Kafka, HDFS, Spark) after
     installing required dependencies (pretty much everything except Cassandra)
 
   2. set up a cassandra cluster (You
@@ -36,7 +39,7 @@ Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
   3. cloned this repo on your master node in the hadoop cluster
 
 
-#### To start the Kafka producer that pulls recent matches from GGtracker API:
+##### To start the Kafka producer that pulls recent matches from GGtracker API:
 
   1. ssh into the master node of your hadoop cluster
 
@@ -57,7 +60,7 @@ Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
     `$ python stargazer/codes/ingestion/produce_recent_matches.py`
 
 
-#### To start Spark Streaming:
+##### To start Spark Streaming:
 
   1. ssh into the master node of your hadoop cluster
 
@@ -79,7 +82,7 @@ Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
 
     `$ ./run_streamprocessing.sh`
 
-#### To do batch processing in Spark:
+##### To do batch processing in Spark:
 
   1. ssh into the master node of your hadoop cluster
 
@@ -93,7 +96,7 @@ Questions and Comments welcome at gy8 [AT] berkeley [DOT] edu
 
     `$ ./run_sparkcassie.sh`
 
-#### To check what is going on in your Cassandra:
+##### To check what is going on in your Cassandra:
 
   1. ssh into the seed node (node0 by default) of your cassandra cluster
 
@@ -162,6 +165,12 @@ This naturally led to the question that I attempt to address with this project:
 **What does game data reveal about map balance?**
 
 ## Data
+All the data (JSON) come from API calls made against
+[ggtracker.com](http://www.ggtracker.com/api),
+there are two main types: meta-data 
+
+
+
 
 
 
