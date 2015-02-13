@@ -1,4 +1,4 @@
-[![][]][website]
+[![][StargazerLogo]][website]
 Stargazer: Map Analytics in Starcraft II
 ====================
 Project for Data Engineering Fellowship at Insight Data Science '15A
