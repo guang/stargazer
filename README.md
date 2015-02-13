@@ -22,7 +22,10 @@ Questions and comments welcome at gy8 [AT] berkeley [DOT] edu
 
 
 ## Overview
-
+Stargazer is a datapipe that serves up aggregated map statistics from a massive amount of
+player-submitted replay files - leveraging Kafka for ingestion, Avro for serialization,
+Spark Streaming for stream processing, Spark SQL for batch processing, Cassandra for
+data storage and Flask for front-end API
 
 
 ## Getting Started
