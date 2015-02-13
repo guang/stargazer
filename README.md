@@ -86,17 +86,20 @@ data storage and Flask for front-end API.
 
   3. package dependencies:
 
-    ```$ sbt assembly
+    ```
+    $ sbt assembly
     ```
 
   4. do a little compilin':
 
-    ```$ sbt package
+    ```
+    $ sbt package
     ```
 
   5. spark-submit and hope you do not see 3 pages of error messages start flowing:
 
-    ```$ ./run_streamprocessing.sh
+    ```
+    $ ./run_streamprocessing.sh
     ```
 
 ##### To do batch processing in Spark:
@@ -125,7 +128,8 @@ data storage and Flask for front-end API.
 
   2. fire up cassandra cql shell
 
-    ```$ cqlsh
+    ```
+    $ cqlsh
     ```
 
   3. create or view keyspaces and tables using
