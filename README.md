@@ -51,9 +51,10 @@ data storage and Flask for front-end API.
 
   2. double check zookeeper is running
 
-    `$ cd /opt/cloudera/parcels/CDH-5.3.0-1.cdh5.3.0.p0.30/bin`
-
-    `$ sudo ./zookeeper-server status`
+    ```
+    $ cd /opt/cloudera/parcels/CDH-5.3.0-1.cdh5.3.0.p0.30/bin
+    $ sudo ./zookeeper-server status
+    ```
 
   3. start up Kafka server (you should run this in the background via tmux as
     it will lock your terminal)
@@ -69,7 +70,9 @@ data storage and Flask for front-end API.
 
   1. ssh into the master node of your hadoop cluster
 
-    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+    ```
+    $ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com
+    ```
 
   2. change directory into SparkStreaming
 
@@ -91,21 +94,25 @@ data storage and Flask for front-end API.
 
   1. ssh into the master node of your hadoop cluster
 
-    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+    ```
+    $ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com
+    ```
 
   2. package dependencies, compile and spark-submit
 
-    `$ sbt assembly`
-
-    `$ sbt package`
-
-    `$ ./run_sparkcassie.sh`
+    ```
+    $ sbt assembly
+    $ sbt package
+    $ ./run_sparkcassie.sh
+    ```
 
 ##### To check what is going on in your Cassandra:
 
   1. ssh into the seed node (node0 by default) of your cassandra cluster
 
-    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+    ```
+    $ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com
+    ```
 
   2. fire up cassandra cql shell
 
