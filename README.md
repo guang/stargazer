@@ -25,7 +25,7 @@ Questions and comments welcome at gy8 [AT] berkeley [DOT] edu
 Stargazer is a datapipe that serves up aggregated map statistics from a massive amount of
 player-submitted replay files - leveraging Kafka for ingestion, Avro for serialization,
 Spark Streaming for stream processing, Spark SQL for batch processing, Cassandra for
-data storage and Flask for front-end API
+data storage and Flask for front-end API.
 
 
 ## Getting Started
@@ -45,11 +45,14 @@ data storage and Flask for front-end API
 
   1. ssh into the master node of your hadoop cluster
 
-    `$ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com`
+    ```
+    $ ssh -i ~/.ssh/YO_PEM_KEY.pem ubuntu@ec2-XX-XX-XX-X.us-west-1.compute.amazonaws.com
+    ```
 
   2. double check zookeeper is running
 
     `$ cd /opt/cloudera/parcels/CDH-5.3.0-1.cdh5.3.0.p0.30/bin`
+
     `$ sudo ./zookeeper-server status`
 
   3. start up Kafka server (you should run this in the background via tmux as
@@ -74,7 +77,7 @@ data storage and Flask for front-end API
 
   3. package dependencies:
 
-    '$ sbt assembly`
+    `$ sbt assembly`
 
   4. do a little compilin':
 
