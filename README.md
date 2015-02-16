@@ -212,19 +212,50 @@ For historical data, the above information are stored in
 - [extended details](https://github.com/gy8/stargazer/raw/master/data/sample_matches_extended.json)
   (10 second snapshots and events triggered)
 
+There are currently around 5.8 million matches available from the GGtracker API.
+At around 100 KB for each match detail files, there are around 500 GB data total available.
+Due to API call restrictions, I currently have only a small fraction of the total data and is
+continuously pulling more.
+
 ### Realtime
 In terms of realtime data, the API does not offer real time streaming of the data but instead
-gives a list of 10 most
+gives a list of the 10 most
 [recent matches](https://github.com/gy8/stargazer/raw/master/data/sample_matches_recent.json)
 submitted when you make the API call.
 
 ## Pipeline
+Here is an overview of the technologies used in my data pipeline:
+
 ![][pipeline]
 
+Notice that this is not an implementation of Nathan Marz's
+[lambda architecture](http://en.wikipedia.org/wiki/Lambda_architecture). While computations
+made from streaming and batch are stored in Cassandra, they are completely different
+metrics and are not merged neither in the data store nor the front-end.
+
+
+### Ingestion
+Here raw json data are mined from the GGtracker API using multiple EC2 nodes with unique IP.
+Data are serialized via avro in batches and pushed onto Kafka.
 
 
 ### Batch Processing
+After getting the serialized avro files onto HDFS, Spark SQL is used to directly read in the
+avro files as schemaRDDs. Currently the only computations being done are 1) aggregating matches
+by the day on which it was played on and 2) rank the top 10 most popular map. There are
+other (more) interesting computations that could be done but are omitted in the interest
+of time (track win rate by race/map, filter by league/patch).
+
+After computations, schemaRDDs are then converted into mapped RDDs to be saved into Cassandra
+directly.
+
 ### Stream Processing
+Here and API call is made every 5 seconds to get a list of most recent matches played. This
+is fed directly into Kafka (without writing to disk) which gets pulled by Spark Streaming
+to extract the maps on which these most recent matches were played on.
+
+This data is then saved into Cassandra directly.
+
 ### API
 
 [stargazer_logo]: https://github.com/gy8/stargazer/raw/master/images/stargazer_logo.jpg
