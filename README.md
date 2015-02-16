@@ -1,4 +1,4 @@
-[![][StargazerLogo]][website]
+[![][stargazer_logo]][website]
 ====================
 Project for Data Engineering Fellowship at Insight Data Science '15A
 
@@ -22,7 +22,7 @@ Questions and comments welcome at gy8 [AT] berkeley [DOT] edu
 
 
 ## Overview
-Stargazer is a datapipe that serves up aggregated map statistics from a massive amount of
+Stargazer is a data pipeline that serves up aggregated map statistics from a massive amount of
 player-submitted replay files - leveraging Kafka for ingestion, Avro for serialization,
 Spark Streaming for stream processing, Spark SQL for batch processing, Cassandra for
 data storage and Flask for front-end API.
@@ -35,8 +35,8 @@ data storage and Flask for front-end API.
   1. set up a hadoop cluster where you run ingestion and processing (Kafka, HDFS, Spark) after
     installing required dependencies (pretty much everything except Cassandra)
 
-  2. set up a cassandra cluster (You
-    do not need dependencies you installed for the other cluster)
+  2. set up a cassandra cluster (you
+    do not need the dependencies you have installed for the hadoop cluster)
 
   3. cloned this repo on your master node in the hadoop cluster
 
@@ -219,9 +219,14 @@ gives a list of 10 most
 submitted when you make the API call.
 
 ## Pipeline
+![][stargazer_logo]
+
+
+
 ### Batch Processing
 ### Stream Processing
 ### API
 
-[StargazerLogo]: https://github.com/gy8/stargazer/raw/master/images/stargazer_logo.jpg
+[stargazer_logo]: https://github.com/gy8/stargazer/raw/master/images/stargazer_logo.jpg
+[pipeline]: https://github.com/gy8/stargazer/raw/master/images/pipeline.jpg
 [website]: http://stargazer.pw
