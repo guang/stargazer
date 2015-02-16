@@ -38,7 +38,6 @@ object SparkCassie {
 //     val query_results = sqlContext.sql("SELECT match_id, ended_at, map_name, duration_seconds FROM simple WHERE player0_current_league_1v1 = 3")
 // 
 //     // -- Duration Over Time By Race --
-//     // FUCK HOW DO I DO THIS
 //     val query_results = sqlContext.sql("SELECT match_id, ended_at, map_name, duration_seconds FROM simple WHERE  = 3")
 // 
 

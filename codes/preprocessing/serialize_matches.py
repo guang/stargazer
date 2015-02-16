@@ -123,21 +123,7 @@ def serialize_match_extended_snapshot(schema, output, extended_match_json,
                                 avro file is to be written.
         extended_match_json:    The raw json file to be serialized.
     """
-
-    # player0_id = get_player_id(extended_match_json, 0)
-    # player1_id = get_player_id(extended_match_json, 1)
-    # num_snapshot = get_num_snapshot(extended_match_json, player0_id)
-
-    # for snapshot in range(num_snapshot):
-    #     snapshot_output = get_snapshot_output(output, snapshot)
-
-    #     writer = get_writer(schema, output)
-
-    # writer.append({
-    #     "match_id": extended_match_json['id'],
-    #     "game_time":
-    #         extended_match_json['VespeneCollectionRate'][player0_id][snapshot]
-    # })
+    pass
 
 
 def serialize_match_extended_event(schema, output, extended_match_json):
@@ -207,33 +193,21 @@ def batch_serialize_matches(source_dir, target_dir, match_type, schema):
     writer.close()
 
 
-# def stream_serialize_matches(source_dir, target_dir, match_type, schema):
-#     """ Serialize matches from source directory (raw jsons) to destination
-#     directory (serialized avros) by repeating calling serialize_match()
-#     here we create many small avro files with 1 row (in addition to schema)
-#     each.
-#
-#     Args:
-#         source_dir:     source directory where raw jsons are stored
-#         target_dir:     destination directory where the resulting serialized
-#                         avro files will substantiate
-#         match_type:     simple, extended_snapshot, or extended_event
-#         schema:         schema to be enforced depending on match_type
-#
-#     """
-#
-#     writer = get_writer(schema, output)
-#
-#     match_names = os.listdir(source_dir)
-#     for match_name in match_names:
-#         match_path = "{}/{}".format(source_dir, match_name)
-#         # gotta change extension from .json to .avro for target name
-#         target_name = "{}.avro".format(os.path.splitext(match_name)[0])
-#         target_path = "{}/{}".format(target_dir, target_name)
-#
-#         serialize_match(writer, match_name, match_path, target_name,
-#                         target_path, match_type, schema)
-#     writer.close()
+def stream_serialize_matches(source_dir, target_dir, match_type, schema):
+    """ Serialize matches from source directory (raw jsons) to destination
+    directory (serialized avros) by repeating calling serialize_match()
+    here we create many small avro files with 1 row (in addition to schema)
+    each.
+
+    Args:
+        source_dir:     source directory where raw jsons are stored
+        target_dir:     destination directory where the resulting serialized
+                        avro files will substantiate
+        match_type:     simple, extended_snapshot, or extended_event
+        schema:         schema to be enforced depending on match_type
+
+    """
+    pass
 
 
 if __name__ == "__main__":
