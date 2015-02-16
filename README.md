@@ -219,7 +219,7 @@ gives a list of 10 most
 submitted when you make the API call.
 
 ## Pipeline
-![][stargazer_logo]
+![][pipeline]
 
 
 
